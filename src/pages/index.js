@@ -21,7 +21,6 @@ export default function Home() {
     const response = await fetch(url);
     const data = await response.json();
     setWeather(data);
-    console.log(currentWeather);
   };
 
   return (
@@ -63,9 +62,10 @@ export default function Home() {
                 textAlign: "center",
                 background: "transparent",
                 border: "1px solid #333",
-                color: "white",
+                color: "#4d2e2e",
                 fontSize: "20px",
-                width:"200px"
+                width: "160px",
+                margin: "10px 10px",
               }}
               type="search"
               id="search"
@@ -77,7 +77,23 @@ export default function Home() {
               input::placeholder {
                 color: white;
               }
+              button {
+                border: 2px solid #4d2e2e;
+                background-color: transparent;
+                color: #4d2e2e;
+                padding: 10px 20px;
+                border-radius: 20px;
+                font-size: 20px;
+                cursor: pointer;
+                text-align: center;
+                transition: background-color 0.3s;
+              }
+              button:hover {
+                background-color: #603838; /* Change color on hover */
+                color: white; /* Change text color on hover */
+              }
             `}</style>
+            <button type="submit">Search</button>
           </form>
         </div>
 
@@ -89,7 +105,7 @@ export default function Home() {
 
         {currentWeather && currentWeather.cod !== "404" ? (
           <>
-            <div style={{display:"flex" , flexDirection:"row"}}>
+            <div style={{ display: "flex", flexDirection: "row" }}>
               <div>
                 <Image
                   src={"https://openweathermap.org/img/wn/04n@2x.png"}
@@ -100,7 +116,7 @@ export default function Home() {
               <div>
                 <h1>{currentWeather.main.temp} ℃</h1>
                 <h3>{currentWeather.weather[0].main}</h3>
-                <h4>wind speed : {currentWeather.wind.speed} KMPH</h4>
+                <h4>wind speed : {currentWeather.wind.speed} Km/H</h4>
               </div>
             </div>
           </>
